@@ -3,6 +3,7 @@ package soft;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Enumeration;
 
 public abstract class Store {
     private String name;
@@ -53,6 +54,7 @@ public abstract class Store {
     public abstract void enter(Customer c);
     public abstract void exit(Customer c);
 //    public Enumeration customers(){
+//
 //        return ;
 //    }
 //    public Enumeration items(){

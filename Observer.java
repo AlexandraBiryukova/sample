@@ -1,4 +1,4 @@
 package soft;
 
-public class Observer {
+public class Observer extends Customer{
 }
