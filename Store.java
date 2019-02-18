@@ -59,6 +59,7 @@ public abstract class Store {
 //        return ;
 //    }
     public void addObserver(Observer o){
+        observers.add(o);
 
     }
 }
