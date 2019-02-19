@@ -53,13 +53,18 @@ public abstract class Store {
     }
     public abstract void enter(Customer c);
     public abstract void exit(Customer c);
-//    public Enumeration customers(){
-//
-//        return ;
-//    }
-//    public Enumeration items(){
-//        return ;
-//    }
+    public String customers(){
+        String res="";
+        for (Customer c:
+             customers) {
+            res+=c.toString()+"/n";
+
+        }
+        return res ;
+    }
+    public String items(){
+        return items.toString();
+    }
     public void addObserver(Observer o){
         observers.add(o);
 

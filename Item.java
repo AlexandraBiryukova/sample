@@ -33,4 +33,9 @@ public class Item {
     public String getStoreId() {
         return storeId;
     }
+
+    @Override
+    public String toString() {
+        return id +" "+ name+" "+price+" "+storeId;
+    }
 }
