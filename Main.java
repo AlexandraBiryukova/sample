@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args)
     {
+        Mall mall = new Mall();
 //        Store store1 = new GameStore();
 //        Store store2 = new ShoeStore();
 //        Store store3 = new BookStore();
@@ -45,9 +46,10 @@ public class Main {
 //        mall.addStore(store3);
 //        mall.addStore(store4);
 //        mall.save();
+        mall=mall.get();
 
 
-        Mall mall = new Mall().get();
+
 
         Customer c = new Customer();
 

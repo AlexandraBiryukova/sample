@@ -117,7 +117,7 @@ public class Mall implements Serializable {
     }
     public void save(){
         try {
-            FileOutputStream out = new FileOutputStream("Storage.out");
+            FileOutputStream out = new FileOutputStream("src/soft/Storage.out");
             ObjectOutputStream oos = new ObjectOutputStream(out);
             oos.writeObject(this);
             oos.flush();
@@ -130,7 +130,7 @@ public class Mall implements Serializable {
     public Mall get(){
         Mall m = new Mall();
         try{
-            FileInputStream in=new FileInputStream("Storage.out");
+            FileInputStream in=new FileInputStream("src/soft/Storage.out");
             ObjectInputStream ois=new ObjectInputStream(in);
             m = (Mall)ois.readObject();
             ois.close();
