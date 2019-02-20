@@ -7,11 +7,13 @@ public abstract class Store implements Serializable {
     private String name;
     private ArrayList<Item> items;
     private ArrayList<Customer> customers;
-    private ArrayList<Observer> observers;
+    private ArrayList<Customer> observers;
     private String storeId;
 
     {
         items = new ArrayList<>();
+        customers =new ArrayList<>();
+        observers=new ArrayList<>();
     }
     public void setName(String name) {
         this.name = name;
@@ -45,11 +47,11 @@ public abstract class Store implements Serializable {
         this.customers = customers;
     }
 
-    public ArrayList<Observer> getObservers() {
+    public ArrayList<Customer> getObservers() {
         return observers;
     }
 
-    public void setObservers(ArrayList<Observer> observers) {
+    public void setObservers(ArrayList<Customer> observers) {
         this.observers = observers;
     }
 
@@ -68,8 +70,12 @@ public abstract class Store implements Serializable {
     public ArrayList<Item> items(){
         return items;
     }
-    public void addObserver(Observer o){
+    public void addObserver(Customer o){
         observers.add(o);
+    }
+    public void addCustomer(Customer c){
+        customers.add(c);
+
     }
 
     public void addItem(Item i){

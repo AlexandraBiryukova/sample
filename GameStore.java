@@ -9,6 +9,7 @@ public class GameStore extends Store {
     public void enter(Customer c) {
         Scanner in = new Scanner(System.in);
         System.out.println(String.format("You're welcome to %s, %s", getName(), c.getName()));
+        boolean bought=false;
         while(true) {
             if (items().isEmpty()) {
                 System.out.println(getName() + " is out of stock");
@@ -18,6 +19,7 @@ public class GameStore extends Store {
             int pos = 1;
             String msg = "";
             if (c.getCart() == null) {
+                addObserver(c);
                 do {
                     pos = 1;
                     System.out.println(msg);
@@ -50,6 +52,8 @@ public class GameStore extends Store {
                 if (choice == pos) {
                     c.showItems();
                 } else if (choice == pos + 1) {
+                    if(bought)
+                        addCustomer(c);
                     return;
                 } else {
                     Item cur = items().get(choice - 1);
@@ -66,6 +70,8 @@ public class GameStore extends Store {
                     while (choice < 1 || choice > 2);
 
                     if (choice == 1) {
+                        bought=true;
+                        addCustomer(c);
                         c.addItem(cur);
                         items().remove(cur);
                     }
@@ -80,20 +86,12 @@ public class GameStore extends Store {
             ArrayList<Customer> cust = this.getCustomers();
             cust.remove(c);
             this.setCustomers(cust);
-            /*
-            HashMap<Item, Integer> purchase=c.getCart().getItems();
-            HashMap<Item, Integer> allItems=super.getItems();
-            for (Item i:purchase.keySet()
-            ) {
-                allItems.replace(i,allItems.get(i),allItems.get(i)-purchase.get(i));
-            }
-            setItems(allItems);
-            c.setCart(new ShoppingCart());
-*/
+
+
 
         }else{
-            ArrayList<Observer> o=getObservers();
-            o.remove((Observer)c);
+            ArrayList<Customer> o=getObservers();
+            o.remove(c);
             setObservers(o);
         }
 

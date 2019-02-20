@@ -3,6 +3,7 @@ package soft;
 import java.io.*;
 import java.util.*;
 
+
 public class Mall implements Serializable {
     private String name;
     private ArrayList<Store> stores;
@@ -67,9 +68,11 @@ public class Mall implements Serializable {
 
 
             if(choice == pos){
-                if(cs.getCart()!=null)
-                    cs.showItems();
-                else{
+                if(cs.getCart()!=null) {
+                    //cs.showItems();
+                    cs.shopping(this);
+
+                }else{
                     cs.setCart(getShoppingCart());
                 }
             }
@@ -89,6 +92,7 @@ public class Mall implements Serializable {
             }
         }
     }
+
 
     public void exit(Customer c){
         double sum = 0;
@@ -130,11 +134,15 @@ public class Mall implements Serializable {
             ObjectInputStream ois=new ObjectInputStream(in);
             m = (Mall)ois.readObject();
             ois.close();
+            return m;
+
 
         }catch(Exception e){
 
         }
         return m;
+
     }
+
 
 }

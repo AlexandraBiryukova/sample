@@ -25,6 +25,7 @@ public class ShoppingCart implements Serializable {
     }
 
     public void removeItem(Item i){
+        items.remove(i);
 
     }
 }
