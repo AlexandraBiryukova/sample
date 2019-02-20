@@ -1,17 +1,18 @@
 package soft;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Enumeration;
+import java.io.Serializable;
+import java.util.*;
 
-public abstract class Store {
+public abstract class Store implements Serializable {
     private String name;
-    private HashMap<Item, Integer> items;
+    private ArrayList<Item> items;
     private ArrayList<Customer> customers;
     private ArrayList<Observer> observers;
     private String storeId;
 
+    {
+        items = new ArrayList<>();
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -20,11 +21,11 @@ public abstract class Store {
         return name;
     }
 
-    public void setItems(HashMap<Item, Integer> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    public HashMap<Item, Integer> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 
@@ -51,24 +52,32 @@ public abstract class Store {
     public void setObservers(ArrayList<Observer> observers) {
         this.observers = observers;
     }
+
     public abstract void enter(Customer c);
+
     public abstract void exit(Customer c);
     public String customers(){
         String res="";
         for (Customer c:
-             customers) {
+                customers) {
             res+=c.toString()+"/n";
 
         }
         return res ;
     }
-    public String items(){
-        return items.toString();
+    public ArrayList<Item> items(){
+        return items;
     }
     public void addObserver(Observer o){
         observers.add(o);
-
     }
+
+    public void addItem(Item i){
+        if(this.items.contains(i)){
+            System.out.println("Item is also exist");
+        }else{
+            this.items.add(i);
+        }
+    }
+
 }
-
-

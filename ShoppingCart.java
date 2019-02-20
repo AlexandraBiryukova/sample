@@ -1,23 +1,29 @@
 package soft;
 
+import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.HashMap;
-public class ShoppingCart {
-    private HashMap<Item, Integer> items;
+import java.util.Vector;
 
-    public void setItems(HashMap<Item, Integer> items) {
+public class ShoppingCart implements Serializable {
+    private Vector<Item> items = new Vector<>();
+
+    public void setItems(Vector<Item> items) {
         this.items = items;
     }
 
-    public HashMap<Item, Integer> getItems() {
+    public Vector<Item> getItems() {
         return items;
     }
-//    public Enumeration items(){
-//
-//    }
-    public void addItem(Item i){
 
+    public void addItem(Item i){
+        if(this.items.contains(i)){
+            System.out.println("Such item already exists");
+        }else{
+            this.items.add(i);
+        }
     }
+
     public void removeItem(Item i){
 
     }
